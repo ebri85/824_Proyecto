@@ -1,16 +1,31 @@
+package Vistas;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vistas;
+import CLASES.*;
+import NEGOCIO.*;
+import java.awt.List;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.Calendar;
+
+
+import java.util.Random;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+
+
 
 /**
  *
- * @author esau.brizuela
+ * @author root
  */
 public class Principal extends javax.swing.JFrame {
-
+Registros rg = new Registros();
     /**
      * Creates new form Principal
      */
@@ -27,21 +42,365 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        moduloCompetencia = new javax.swing.JTabbedPane();
+        registroCodorniz = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        nomb_Codorniz = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        edad_Codorniz = new javax.swing.JTextField();
+        especie_Codorniz = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        peso_Codorniz = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        propietario_Codorniz = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        RegistraCodorniz = new javax.swing.JToggleButton();
+        registroCarrera = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        txt_Fecha = new javax.swing.JTextField();
+        listaCodornices = new javax.swing.JScrollPane();
+        lista = new javax.swing.JList<>();
+        RegistraCarrera = new javax.swing.JToggleButton();
+        resultados = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Principal");
+        setName("principal"); // NOI18N
+
+        moduloCompetencia.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                moduloCompetenciaStateChanged(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre:");
+
+        nomb_Codorniz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomb_CodornizActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Edad:");
+
+        edad_Codorniz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edad_CodornizzActionPerformed(evt);
+            }
+        });
+
+        especie_Codorniz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especie_CodornizActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Especie:");
+
+        peso_Codorniz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                peso_CodornizActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Peso:");
+
+        propietario_Codorniz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propietario_CodornizActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Propietario:");
+
+        RegistraCodorniz.setText("Registrar");
+        RegistraCodorniz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistraCodornizActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RegistraCodorniz)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(propietario_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(341, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomb_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(edad_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(especie_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(peso_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(319, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nomb_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(edad_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(especie_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(peso_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(propietario_Codorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addComponent(RegistraCodorniz, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(189, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout registroCodornizLayout = new javax.swing.GroupLayout(registroCodorniz);
+        registroCodorniz.setLayout(registroCodornizLayout);
+        registroCodornizLayout.setHorizontalGroup(
+            registroCodornizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registroCodornizLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        registroCodornizLayout.setVerticalGroup(
+            registroCodornizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registroCodornizLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        moduloCompetencia.addTab("Registro Codorniz", registroCodorniz);
+
+        jLabel5.setText("Fecha: ");
+
+        lista.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        lista.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaCodornices.setViewportView(lista);
+
+        RegistraCarrera.setText("Registrar Carrera");
+        RegistraCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistraCarreraActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout registroCarreraLayout = new javax.swing.GroupLayout(registroCarrera);
+        registroCarrera.setLayout(registroCarreraLayout);
+        registroCarreraLayout.setHorizontalGroup(
+            registroCarreraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registroCarreraLayout.createSequentialGroup()
+                .addGroup(registroCarreraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(registroCarreraLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(listaCodornices, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(registroCarreraLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(RegistraCarrera)))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        registroCarreraLayout.setVerticalGroup(
+            registroCarreraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registroCarreraLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(registroCarreraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(listaCodornices, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(registroCarreraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
+                .addComponent(RegistraCarrera)
+                .addContainerGap(431, Short.MAX_VALUE))
+        );
+
+        moduloCompetencia.addTab("Registro Carrera", registroCarrera);
+
+        javax.swing.GroupLayout resultadosLayout = new javax.swing.GroupLayout(resultados);
+        resultados.setLayout(resultadosLayout);
+        resultadosLayout.setHorizontalGroup(
+            resultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 616, Short.MAX_VALUE)
+        );
+        resultadosLayout.setVerticalGroup(
+            resultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 676, Short.MAX_VALUE)
+        );
+
+        moduloCompetencia.addTab("Resultados", resultados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(moduloCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(moduloCompetencia)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nomb_CodornizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomb_CodornizActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomb_CodornizActionPerformed
+
+    private void edad_CodornizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edad_CodornizActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edad_CodornizActionPerformed
+
+    private void especie_CodornizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especie_CodornizActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_especie_CodornizActionPerformed
+
+    private void peso_CodornizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_peso_CodornizActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_peso_CodornizActionPerformed
+
+    private void propietario_CodornizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propietario_CodornizActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_propietario_CodornizActionPerformed
+
+    private void RegistraCodornizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistraCodornizActionPerformed
+          
+        
+        Codornices Codorniz;
+
+      
+        String nombre,propietario,idNum,especie;
+        double peso;
+        int edad;
+        int opcion;
+        String datos = null;
+        lista.setModel(modeloLista);
+        
+       
+    // do { 
+     
+     try{
+         rg.GeneraArchivo("codornices.txt");
+        rg.GeneraArchivo("carreras.txt");
+         nombre = nomb_Codorniz.getText();
+        propietario = propietario_Codorniz.getText();
+        peso = Double.parseDouble(peso_Codorniz.getText());
+        edad = Integer.parseInt(edad_Codorniz.getText());
+        especie = especie_Codorniz.getText();
+  
+        
+        
+            Random rnd = new Random();
+        int valor;
+        valor= rnd.nextInt((999)+100);
+        String hilera;
+        hilera = especie.substring(0,3)+propietario.substring(0,3)+valor;
+        
+        
+        idNum = hilera.toUpperCase();
+        Codorniz = new Codornices (idNum, nombre, edad, especie, peso, propietario);
+     
+        datos += Codorniz.toString();
+        rg.GeneraRegistro(nombre, edad, especie, peso, propietario);
+        
+       modeloLista.addElement(Codorniz.getNumID());
+        
+       
+        
+        
+         }catch(Exception e){
+         
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }
+     
+//        opcion = JOptionPane.showConfirmDialog(null,"Desea Salir" );
+//        
+//        } while(opcion!=0);
+        
+   
+
+
+    }//GEN-LAST:event_RegistraCodornizActionPerformed
+
+    private void moduloCompetenciaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_moduloCompetenciaStateChanged
+        peso_Codorniz.setText(null);
+        edad_Codorniz.setText(null);
+        especie_Codorniz.setText(null);
+        nomb_Codorniz.setText(null);
+        propietario_Codorniz.setText(null);
+        txt_Fecha.setText(reloj);
+        
+        
+        
+       
+    
+        
+        
+    }//GEN-LAST:event_moduloCompetenciaStateChanged
+
+    private void RegistraCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistraCarreraActionPerformed
+       
+        try{
+            String hora;
+            String part;
+            hora = txt_Fecha.getText();
+            int cont= 1;
+            
+            part = (String)modeloLista.getElementAt(lista.getSelectedIndex());
+            
+            carrera = new Carreras();
+         do{   
+            carrera.agregaParticipante(part);
+            
+           } while(cont==5);
+         
+         rg.GeneraRegistro(carrera);
+         }catch(Exception e){
+         
+        JOptionPane.showMessageDialog(null, e.getMessage());
+         }
+    }//GEN-LAST:event_RegistraCarreraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,10 +433,98 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
+              
+                
             }
         });
     }
+   
+    
+//    public int archivoCreado(int binario) {
+//        
+//        int resultado = 0;
+//        
+//          
+//          
+//              try{  
+//                  switch(binario){ 
+//                       
+//                      case 1:   
+//                 
+//                  
+//                      rg.GeneraArchivo("Codorniz.txt");
+//                      rg.GeneraArchivo("carrera.txt");
+//                      
+//                      resultado = 1;
+//                      break;
+//                      
+//                      case 0:
+//                          
+//                          resultado= 0;
+//                          break;
+//                  }
+//
+//               
+//              } catch(Exception e){
+//                  
+//              }
+//        
+//        return resultado;
+//    }
+      
+    Codornices cod;
+    Carreras carrera;
+    
+     Calendar tiempo = Calendar.getInstance();
+        String hora = String.valueOf(tiempo.get(Calendar.HOUR));
+        String minutos = String.valueOf(tiempo.get(Calendar.MINUTE));
+        String segundos = String.valueOf(tiempo.get(Calendar.SECOND));
+        String dia = tiempo.getTime().toString();
+        int amPM = tiempo.get(Calendar.AM_PM);     
+        String reloj = hora + ':' + minutos +':'+segundos +'.'+ Jornada();
+      
+        
+  DefaultListModel modeloLista = new DefaultListModel();
+                             
+        
+        String Jornada() {
+            String resultado = null;
+            
+            switch (amPM){                
+                case 0:
+                    resultado = "AM";
+                    break;                    
+                case 1:                    
+                    resultado = "PM";
+                    break; 
+                    
+                default:
+                    break;
+            }           
+            return resultado; 
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton RegistraCodorniz;
+    private javax.swing.JToggleButton RegistraCarrera;
+    private javax.swing.JTextField edad_Codorniz;
+    private javax.swing.JTextField especie_Codorniz;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    public javax.swing.JList<String> lista;
+    private javax.swing.JScrollPane listaCodornices;
+    private javax.swing.JTabbedPane moduloCompetencia;
+    private javax.swing.JTextField nomb_Codorniz;
+    private javax.swing.JTextField peso_Codorniz;
+    private javax.swing.JTextField propietario_Codorniz;
+    private javax.swing.JPanel registroCodorniz;
+    private javax.swing.JPanel registroCarrera;
+    private javax.swing.JPanel resultados;
+    private javax.swing.JTextField txt_Fecha;
     // End of variables declaration//GEN-END:variables
 }
